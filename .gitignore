@@ -1,1 +1,18 @@
-.idea/
+# Ignorer uniquement les fichiers spécifiques à l'utilisateur
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+.idea/vcs.xml
+.idea/dataSources/
+.idea/dataSources.local/
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/gradle.xml
+.idea/libraries/
+
+# Partager les configurations importantes
+!.idea/modules.xml
+!.idea/*.iml
+!.idea/runConfigurations/
+!.idea/encodings.xml
+!.idea/misc.xml

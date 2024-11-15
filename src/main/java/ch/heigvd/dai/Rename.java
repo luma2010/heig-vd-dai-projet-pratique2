@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Rename {
-    public static void run(String fileName, String varName, String newVarname) {
+    public static void renameVar(String fileName, String varName, String newVarname) {
 
         try (InputStream is = new FileInputStream(fileName);
              Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8);
