@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Rename {
-    public static void renameVar(String fileName, String varName, String newVarname) {
+    public static int renameVar(String fileName, String varName, String newVarname) {
 
         try (InputStream is = new FileInputStream(fileName);
              Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8);
@@ -54,12 +54,15 @@ public class Rename {
 
             } else if(!varExists) {
                 System.out.println("Variable " + varName + " not found, no changes made.");
+                return 1;
             } else {
                 System.out.println("Variable " + varName + " not changed because " + newVarname + " already exists.");
+                return 2;
             }
 
         } catch (IOException e) {
             System.out.println("Exception " + e);
         }
+        return 0;
     }
 }

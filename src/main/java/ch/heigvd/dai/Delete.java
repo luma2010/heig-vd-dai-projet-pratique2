@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class Delete {
 
-    public static void deleteVariableToFile(String fileName, String varName) {
+    public static int deleteVariableToFile(String fileName, String varName) {
         try (
                 InputStream in = new FileInputStream(fileName);
                 Reader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
@@ -43,11 +43,13 @@ public class Delete {
                 System.out.println("Variable " + varName + " has been deleted.");
             } else {
                 System.out.println("Variable " + varName + " not found, nothing changed.");
+                return 1;
             }
 
         } catch (IOException e) {
             System.out.println("Exception: " + e);
         }
+        return 0;
     }
 }
 

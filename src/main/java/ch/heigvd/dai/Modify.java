@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Modify {
-    public static void modifyVar(String fileName, String varName, String newVarValue) {
+    public static int modifyVar(String fileName, String varName, String newVarValue) {
         try (InputStream is = new FileInputStream(fileName);
              Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8);
              BufferedReader br = new BufferedReader(reader);) {
@@ -44,11 +44,13 @@ public class Modify {
                 System.out.println("Value of variable " + varName + " is now " + newVarValue);
             }else{
                 System.out.println("Variable " + varName + " not found, no changes made.");
+                return 1;
             }
 
 
         } catch (IOException e) {
             System.out.println("Exeption " + e);
         }
+        return 0;
     }
 }
