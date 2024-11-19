@@ -14,7 +14,7 @@ public class Add {
      * @param varName Le nom de la variable.
      * @param varValue La valeur de la variable.
      */
-    public static void addVariableToFile(String fileName, String varName, String varValue) {
+    public static int addVariableToFile(String fileName, String varName, String varValue) {
         try {
             boolean alreadyExist = false;
 
@@ -52,8 +52,13 @@ public class Add {
 
             bw.flush();
             bw.close();
+            if(alreadyExist){
+                return 1;
+            }
+
         } catch (IOException e) {
             System.out.println("Exception " + e);
         }
+        return 0;
     }
 }
