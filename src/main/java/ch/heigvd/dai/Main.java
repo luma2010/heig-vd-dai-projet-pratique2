@@ -9,6 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import picocli.CommandLine;
 
@@ -35,7 +36,7 @@ public class Main implements Runnable{
     protected String type;
 
     public void run() {
-        if(type.equals("server")){
+        if (type.equals("server")) {
             ServerSocket server = null;
             try {
                 server = new ServerSocket(port);
@@ -43,7 +44,7 @@ public class Main implements Runnable{
                 throw new RuntimeException(e);
             }
             System.out.println("Waiting for client...");
-            while(!server.isClosed()){
+            while (!server.isClosed()) {
                 Socket socket = null;
                 try {
                     socket = server.accept();
@@ -54,7 +55,7 @@ public class Main implements Runnable{
                 clientThread.start();
                 System.out.println("Client connected");
             }
-        }else if(type.equals("client")){
+        } else if (type.equals("client")) {
             InetAddress host = null;
             try {
                 host = InetAddress.getLocalHost();
@@ -64,24 +65,16 @@ public class Main implements Runnable{
             Socket socket = null;
             OutputStreamWriter oos = null;
             InputStreamReader ois = null;
-            Scanner myInput = new Scanner( System.in );
-            int port = 4444;
+            Scanner myInput = new Scanner(System.in);
             try {
                 socket = new Socket(host.getHostName(), port);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            try {
-                oos = new OutputStreamWriter(socket.getOutputStream(),StandardCharsets.UTF_8);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            BufferedWriter wr = new BufferedWriter(oos);
-            try {
+                oos = new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8);
                 ois = new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
+            BufferedWriter wr = new BufferedWriter(oos);
             BufferedReader br = new BufferedReader(ois);
             String message = null;
             try {
@@ -91,8 +84,8 @@ public class Main implements Runnable{
             }
             System.out.println(message);
 
-            while(true){
-                for(int i = 0; i < 5; i++){
+            while (true) {
+                for (int i = 0; i < 5; i++) {
                     try {
                         message = br.readLine();
                     } catch (IOException e) {
@@ -100,21 +93,17 @@ public class Main implements Runnable{
                     }
                     System.out.println(message);
                 }
-                String input = myInput.nextLine()+"\n";
+                String input = myInput.nextLine() + "\n";
                 try {
                     wr.write(input);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                try {
                     wr.flush();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                if(input.startsWith("EXIT")){
+                if (input.startsWith("EXIT")) {
                     break;
-                }else if(input.startsWith("VARIABLES") && input.length() > 10){
-                    for(int i = 0; i < 5; i++){
+                } else if (input.startsWith("VARIABLES") && input.length() > 10) {
+                    for (int i = 0; i < 5; i++) {
                         try {
                             message = br.readLine();
                         } catch (IOException e) {
@@ -122,69 +111,59 @@ public class Main implements Runnable{
                         }
                         System.out.println(message);
                     }
-                    input = myInput.nextLine()+"\n";
+                    input = myInput.nextLine() + "\n";
                     try {
                         wr.write(input);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    try {
                         wr.flush();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    try {
                         message = br.readLine();
+
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    System.out.println(message+"\n");
-                }else if(input.startsWith("CAT") && input.length() > 4){
-                    while(true){
+                    System.out.println(message + "\n");
+                } else if (input.startsWith("CAT") && input.length() > 4) {
+                    while (true) {
                         try {
                             message = br.readLine();
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
-                        if(message.startsWith("|||")){
+                        if (message.startsWith("|||")) {
                             break;
                         }
                         System.out.println(message);
                     }
                     System.out.println();
-                }else if(input.startsWith("LS")){
-                    while(true){
+                } else if (input.startsWith("LS")) {
+                    while (true) {
                         try {
                             message = br.readLine();
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
-                        if(message.startsWith("|||")){
+                        if (message.startsWith("|||")) {
                             break;
                         }
                         System.out.println(message);
                     }
                     System.out.println();
-                }else{
+                } else {
                     try {
                         message = br.readLine();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    System.out.println(message+"\n");
+                    System.out.println(message + "\n");
                 }
 
             }
             try {
                 ois.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            try {
                 oos.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
         }
 
     }
