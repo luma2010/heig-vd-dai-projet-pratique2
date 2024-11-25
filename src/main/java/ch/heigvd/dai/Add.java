@@ -15,26 +15,22 @@ public class Add {
      * @param varValue La valeur de la variable.
      */
     public static int addVariableToFile(String fileName, String varName, String varValue) {
-        try {
+        try (InputStream is = new FileInputStream(fileName);
+             Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8);
+             BufferedReader br = new BufferedReader(reader);
+             OutputStream os = new FileOutputStream(fileName);
+             Writer writer = new OutputStreamWriter(os, StandardCharsets.UTF_8);
+             BufferedWriter bw = new BufferedWriter(writer);){
             boolean alreadyExist = false;
 
             // Lire le fichier
-            InputStream is = new FileInputStream(fileName);
-            Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8);
-            BufferedReader br = new BufferedReader(reader);
-
             List<String> lines = new ArrayList<>();
             String line;
             while ((line = br.readLine()) != null) {
                 lines.add(line + "\n");
             }
-            br.close();
 
             // Écriture dans le fichier
-            OutputStream os = new FileOutputStream(fileName);
-            Writer writer = new OutputStreamWriter(os, StandardCharsets.UTF_8);
-            BufferedWriter bw = new BufferedWriter(writer);
-
             for (String currentLine : lines) {
                 String[] part = currentLine.split("=");
                 if (Objects.equals(part[0], varName)) {
@@ -51,7 +47,6 @@ public class Add {
             }
 
             bw.flush();
-            bw.close();
             if(alreadyExist){
                 return 1;
             }
