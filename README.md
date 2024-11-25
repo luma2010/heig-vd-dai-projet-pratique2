@@ -174,7 +174,23 @@ cliquant sur le lien suivant :
 [Lien du projet]()
 
 Une fois sur cette page, vous pourrez télécharger le conteneur Docker afin de le faire fonctionner localement.
-Maintenant que vous avez le projet sur votre machine, vous devez lancer le serveur docker avec la commande suivante :
+Afin que le projet puisse fonctionner, nous devons du créer un docker network afin que les deux containers puissent
+communiquer entre eux. Il vous faudra télécharger ce conteneur en plus du projet.
+
+
+
+Maintenant que vous avez les conteneurs sur votre machine, le premier conteneur que vous devez lancer est celui qui 
+permet la connexion entre le client et le serveur. Voici la commande que nous vous recommandons de faire :
+```bash
+docker network create --subnet=172.28.0.0/16 mynet123
+docker run --network=mynet123 --ip 172.28.0.2 -it heig-vd-dai-projet-pratique2 4444 client 172.28.0.3
+```
+
+> [REMARQUE]  
+> L'adresse IP peut être différente de celle que nous vous proposons, mais il faut utiliser le même range d'adresse
+> afin de pouvoir établir la connexion.
+ 
+Une fois que le docker network a été lancé, vous devez lancer le serveur docker avec la commande suivante :
 ```bash
 docker run vamp_protocole <numero_port> server <adress_IP>
 ```
@@ -189,7 +205,10 @@ Une fois que la partie client est lancée, il vous suffit d'entrer les commandes
 // TODO  
 Dans cette section, nous allons passer plus en détail sur l'implémentation de nos méthodes.
 La méthode addVariableToFile :  
-Pour cette méthode, nous avons 
+Pour cette méthode, nous avons choisi d'utiliser un _try-with-ressources_ dans lequel nous initialisons les flux d'entrée
+et de sortie en spécifiant l'encodage souhaité (UTF_8). La fonction permet de lire le flux d'entrée afin de vérifier que 
+la variable que nous souhaitons ajouter n'existe pas. Si c'est bien le cas, la fonction écrit la nouvelle variable et sa
+valeur dans le fichier.
 - Exemple d'affichage lors du démarrage.
 
 
