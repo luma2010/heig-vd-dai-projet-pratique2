@@ -1,7 +1,6 @@
 # heig-vd-dai-projet-pratique2
 #### Chollet Florian - Delétraz Alexandre
 
-
 # VAMP Protocole :
 
 ## Section 1 - Overview
@@ -34,7 +33,6 @@ commande disponible.
 La fermeture de la connection sera effectuée en premier par le client, puis par le serveur.
 
 ## Section 3 - Messages
-
 ### Choix des commandes
 Le client sera invité à utiliser une des commandes suivantes :
 ```text
@@ -170,30 +168,28 @@ Reponse :
 
 
 ## Utiliser le projet localement
-Afin d'utiliser le programme localement sur votre machine, rendez-vous sur notre repo GitHum en cliquant sur le lien 
-suivant :  
-[Lien du projet](https://github.com/luma2010/heig-vd-dai-projet-pratique2)
+Notre projet est mis sous la forme d'un conteneur Docker et il est stocké sur GitHub Container Registry.  
+Afin d'utiliser le programme localement sur votre machine, rendez-vous sur notre repo GitHub Container Registry en 
+cliquant sur le lien suivant :  
+[Lien du projet]()
 
-Une fois sur notre repository, nous vous recommandons de faire un fork du projet, cela vous permettra de tester ce que 
-nous avons mis en place et d'y apporter des modifications comme bon vous semble.  
-Pour faire le fork, il vous suffit de cliquer sur les boutons comme montré ci-dessous :
-
-![image_fork_1](./bouton_fork_1.png)
-
-![image_fork_1](./bouton_fork_2.png)
-
-Une fois que vous avez le projet sur votre machine, vous devez lancer le serveur docker avec la commande suivante :
-```text
-docker run vamp_protocole
+Une fois sur cette page, vous pourrez télécharger le conteneur Docker afin de le faire fonctionner localement.
+Maintenant que vous avez le projet sur votre machine, vous devez lancer le serveur docker avec la commande suivante :
+```bash
+docker run vamp_protocole <numero_port> server <adress_IP>
 ```
 
-Le serveur docker tourne maintenant comme tâche en arrière-plan.
-
-En parallèle, vous devez lancer l'application utilisateur, vamp_cli.
+En parallèle, vous devez lancer la partie client avec la commande : 
+```bash
+docker run vamp_protocole <numero_port> client <adress_IP>
+```
+Une fois que la partie client est lancée, il vous suffit d'entrer les commandes que vous souhaitez utiliser.
 
 ## Implémentation
 // TODO  
-- Explication de l'implémentation des fonctions et de l'application.
+Dans cette section, nous allons passer plus en détail sur l'implémentation de nos méthodes.
+La méthode addVariableToFile :  
+Pour cette méthode, nous avons 
 - Exemple d'affichage lors du démarrage.
 
 
