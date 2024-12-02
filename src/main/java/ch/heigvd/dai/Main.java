@@ -1,10 +1,7 @@
 package ch.heigvd.dai;
 
 import java.io.*;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +32,28 @@ public class Main implements Runnable{
     )
     protected String type;
 
+
+    @CommandLine.Parameters(
+            index = "2",
+            description = "IP of the server/client"
+    )
+    protected String addr;
+
     public void run() {
         if (type.equals("server")) {
             ServerSocket server = null;
+            InetAddress address = null;
+            SocketAddress servAddr = null;
             try {
-                server = new ServerSocket(port);
+                address = InetAddress.getByName(addr);
+                servAddr = new InetSocketAddress(address,port);
+            } catch (UnknownHostException e) {
+                throw new RuntimeException(e);
+            }
+
+            try {
+                server = new ServerSocket();
+                server.bind(servAddr);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -58,7 +72,7 @@ public class Main implements Runnable{
         } else if (type.equals("client")) {
             InetAddress host = null;
             try {
-                host = InetAddress.getLocalHost();
+                host = InetAddress.getByName(addr);
             } catch (UnknownHostException e) {
                 throw new RuntimeException(e);
             }
