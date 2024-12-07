@@ -72,8 +72,8 @@ ERROR <num>
 ```
 ```<num>``` :
 
-- 1 : le fichier rechercher n'existe pas.
-- 2 : le fichier est déja ouvert par un autre utilisateur.
+- 1 : Il manque des arguments
+- 2 : Le fichier souhaité n'existe pas
 
 ### VARIABLES :
 La commande ```VARIABLES``` permet de modifier, ajouter ou supprimer une variable contenue dans un fichier.
@@ -89,7 +89,7 @@ ERROR <num>
 ```<num>``` :
 
 - 1 : le fichier rechercher n'existe pas.
-- 2 : le fichier est déja ouvert par un autre utilisateur.
+- 2 : Il manque des arguments
 
 Dans le cas contraire, l'utilisateur sera présenter avec les options suivantes :
 
@@ -111,7 +111,7 @@ ADD <varName> <varValue>
 - ```<varValue>``` : valeur de la variable.
 
 Réponse :
-- ```OK``` : la creation de la variable n'a eu aucun problème
+- ```VARIABLE CREATED``` : la creation de la variable n'a eu aucun problème
 - ```ERROR <num>``` : la création de la variable a entrainé une des erreurs suivantes :
   - 1 : une variable existe déja avec le nom demandé.
   - 2 : un ou plusieurs arguments sont manquants.
@@ -126,7 +126,7 @@ DELETE <varName>
 - ```<varName>``` : nom de la variable
 
 Réponse :
-- ```OK``` : la suppression de la variable n'a eu aucun problème
+- ```VARIABLE DELETED``` : la suppression de la variable n'a eu aucun problème
 - ```ERROR <num>``` : la suppression de la variable a entrainé une des erreurs suivantes :
   - 1 : aucune variable avec le nom suivant existe
   - 2 : un ou plusieurs arguments sont manquants.
@@ -142,7 +142,7 @@ MODIFY <varName> <varValue>
 - ```<varValue>``` : nouvelle valeur de la variable
 
 Réponse :
-- ```OK``` : la modification de la valeur de la variable n'a eu aucun problème
+- ```VARIABLE MODIFIED``` : la modification de la valeur de la variable n'a eu aucun problème
 - ```ERROR <num>``` : la modification de la valeur de la variable a entrainé une des erreurs suivantes :
   - 1 : aucune variable avec le nom suivant existe.
   - 2 : un ou plusieurs arguments sont manquants.
