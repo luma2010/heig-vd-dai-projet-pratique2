@@ -243,7 +243,7 @@ class ClientHandler implements Runnable {
                     wr.flush();
                 } else if(message.startsWith("CAT")) {
                     if(message.length() <= 4) {
-                        wr.write("ERROR 3\n");
+                        wr.write("ERROR 1\n");
                         wr.flush();
                         wr.write("|||\n");
                         wr.flush();
@@ -264,7 +264,7 @@ class ClientHandler implements Runnable {
                         isLs.close();
                         String[] token = message.split(" ");
                         if(token.length != 2 || !fileExist){
-                            wr.write("ERROR 3\n");
+                            wr.write("ERROR 2\n");
                             wr.flush();
                         }else{
                             InputStream is = new FileInputStream(filename);
@@ -283,7 +283,7 @@ class ClientHandler implements Runnable {
                     }
                 } else if(message.startsWith("VARIABLES")) {
                     if(message.length() <= 10) {
-                        wr.write("ERROR 3\n");
+                        wr.write("ERROR 1\n");
                     } else {
                         String filename = message.substring(10);
 
