@@ -72,7 +72,7 @@ ERROR <num>
 ```
 ```<num>``` :
 
-- 1 : Il manque des arguments
+- 1 : Il manque des arguments à la commande
 - 2 : Le fichier souhaité n'existe pas
 
 ### VARIABLES :
@@ -89,7 +89,7 @@ ERROR <num>
 ```<num>``` :
 
 - 1 : le fichier rechercher n'existe pas.
-- 2 : Il manque des arguments
+- 2 : Il manque des arguments à la commande
 
 Dans le cas contraire, l'utilisateur sera présenter avec les options suivantes :
 
