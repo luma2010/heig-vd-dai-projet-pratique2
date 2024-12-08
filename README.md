@@ -199,7 +199,7 @@ docker network create --subnet=172.28.0.0/16 mynet123
  
 Une fois que le docker network a été lancé, vous devez lancer le serveur docker avec la commande suivante :
 ```text
-docker run ghcr.io/luma2010/heig-vd-dai-rpjet-pratique2:latest <numero_port> server <adress_IP>
+docker run --network=mynet123 --ip <ipDeLaMachine> -it heig-vd-dai-rpjet-pratique2 <numeroPort> server <ipDuServer>
 ```
 
 En parallèle, vous devez lancer la partie client avec la commande : 
@@ -235,6 +235,58 @@ docker push <nomDeImage>
 ```
 ```<nomDeImage>``` : nom de l'image que l'on veut publier.
 Cette commande va publier l'image que souhaitée sur GitHub Container Registry.
+
+
+## Example d'utilisation
+Lancer le coté server avec la commande suivante :
+```bash
+java -jar target/heih-vd-dai-projet-pratique2-1.0-SNAPSHOT.jar 4444 server 127.0.0.1
+```
+Puis lancer le coté client avec la commande suivante :
+```bash
+java -jar target/heih-vd-dai-projet-pratique2-1.0-SNAPSHOT.jar 4444 client 127.0.0.1
+```
+
+Une fois ceci fait, le coté client recevra les lignes suivantes dans son terminal :
+```bash
+Welcome to DAI project 2
+Please select one of the following :
+LS
+CAT <filename>
+VARIABLES <filename>
+EXIT 
+```
+
+On peut consulter les fichiers présent à l'aide de la commande suivante :
+```bash
+LS
+```
+
+Cela donnera le résultat
+```bash
+FILES :
+test.txt
+```
+
+On peut aussi faire :
+```bash
+VARIABLES test.txt
+```
+
+Nous obtiendrons le résultat suivant
+```bash
+ Please Select one of the following :
+ADD <varName> <varValue>
+DELETE <varName>
+MODIFY <varName> <varValue>
+RENAME <varName> <newVarName>
+```
+
+Il suffit ensuite de choisir une option suivantes, par exemples :
+```bash
+ADD test123456 jhgds
+```
+Ceci créra une variable "test123456" avec la valeur jhgds
 
 ## Implémentation
 Dans cette section, nous allons passer plus en détail sur l'implémentation de nos méthodes.
