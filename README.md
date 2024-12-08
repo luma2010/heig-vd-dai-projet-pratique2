@@ -88,7 +88,7 @@ ERROR <num>
 ```
 ```<num>``` :
 
-- 1 : le fichier rechercher n'existe pas.
+- 1 : Il manque des arguments.
 
 
 Dans le cas contraire, l'utilisateur sera présenter avec les options suivantes :
