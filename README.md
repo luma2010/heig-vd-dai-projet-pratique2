@@ -170,9 +170,11 @@ Reponse :
 
 ## Section 4 - Examples
 Ci-dessous nous pouvons voir un exemple fonctionnel entre le server et un client :
+
 ![diagramme1](diagramme_sequence_1.png)
 
-Ci-dessous, un autre exemple, mais avec une erreur
+Ci-dessous, un autre exemple, mais avec une erreur :
+
 ![diagramme2](diagramme_sequence_2.png)
 
 ## Utiliser le projet localement
