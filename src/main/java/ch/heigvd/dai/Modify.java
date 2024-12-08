@@ -50,6 +50,7 @@ public class Modify {
 
         } catch (IOException e) {
             System.out.println("Exeption " + e);
+            return 3;
         }
         return 0;
     }

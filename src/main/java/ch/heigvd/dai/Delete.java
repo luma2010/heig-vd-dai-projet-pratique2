@@ -48,6 +48,7 @@ public class Delete {
 
         } catch (IOException e) {
             System.out.println("Exception: " + e);
+            return 3;
         }
         return 0;
     }

@@ -245,8 +245,6 @@ class ClientHandler implements Runnable {
                     if(message.length() <= 4) {
                         wr.write("ERROR 1\n");
                         wr.flush();
-                        wr.write("|||\n");
-                        wr.flush();
                     } else {
                         boolean fileExist = false;
                         String filename = message.substring(4);
@@ -265,6 +263,8 @@ class ClientHandler implements Runnable {
                         String[] token = message.split(" ");
                         if(token.length != 2 || !fileExist){
                             wr.write("ERROR 2\n");
+                            wr.flush();
+                            wr.write("|||\n");
                             wr.flush();
                         }else{
                             InputStream is = new FileInputStream(filename);

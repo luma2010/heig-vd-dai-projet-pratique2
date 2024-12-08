@@ -3,5 +3,4 @@ var1=234
 var1234=4567
 var=9876
 var9876=12345
-varTest=loiuk
 varpiuztre=812736

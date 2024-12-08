@@ -62,6 +62,7 @@ public class Rename {
 
         } catch (IOException e) {
             System.out.println("Exception " + e);
+            return 3;
         }
         return 0;
     }
