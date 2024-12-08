@@ -210,6 +210,32 @@ docker run ghcr.io/luma2010/heig-vd-dai-rpjet-pratique2:latest <numero_port> cli
 Une fois que la partie client est lancée, il vous suffit d'entrer les commandes que vous souhaitez utiliser.
 
 ## Publier le projet sur docker
+Afin de publier le projet sur docker, nous avons du crée le Dockerfile suivant :
+```Dockerfile
+FROM eclipse-temurin:21-jre
+
+WORKDIR /app
+
+COPY target/heih-vd-dai-projet-pratique2-1.0-SNAPSHOT.jar heih-vd-dai-projet-pratique2-1.0-SNAPSHOT.jar
+COPY ls.txt ls.txt
+COPY test.txt test.txt
+
+ENTRYPOINT ["java","-jar","/app/heih-vd-dai-projet-pratique2-1.0-SNAPSHOT.jar"]
+```
+
+Une fois le Dockerfile crée, nous devons lancer la commande suivante :
+```bash
+docker build -t <nomDeImage> .
+```
+```<nomDeImage>``` : nom que l'on veut donner à l'image.
+Cette commande va regarder le Dockerfile afin de crée l'image.
+
+Une fois l'image crée, il faudra être authentifier pour publier sur GitHub Container Registry à l'aide de la commande suivante :
+```bash
+docker push <nomDeImage>
+```
+```<nomDeImage>``` : nom de l'image que l'on veut publier.
+Cette commande va publier l'image que souhaitée sur GitHub Container Registry.
 
 ## Implémentation
 Dans cette section, nous allons passer plus en détail sur l'implémentation de nos méthodes.
