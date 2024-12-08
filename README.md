@@ -171,11 +171,11 @@ Reponse :
 ## Section 4 - Examples
 Ci-dessous nous pouvons voir un exemple fonctionnel entre le server et un client :
 
-![diagramme1](diagramme_sequence_1.png)
+![diagramme2](diagramme_sequence_2.png)
 
 Ci-dessous, un autre exemple, mais avec une erreur :
 
-![diagramme2](diagramme_sequence_2.png)
+![diagramme1](diagramme_sequence_1.png)
 
 ## Utiliser le projet localement
 Notre projet est mis sous la forme d'un conteneur Docker et il est stocké sur GitHub Container Registry.  
