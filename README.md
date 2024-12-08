@@ -89,7 +89,7 @@ ERROR <num>
 ```<num>``` :
 
 - 1 : le fichier rechercher n'existe pas.
-- 2 : Il manque des arguments à la commande
+
 
 Dans le cas contraire, l'utilisateur sera présenter avec les options suivantes :
 
@@ -115,6 +115,7 @@ Réponse :
 - ```ERROR <num>``` : la création de la variable a entrainé une des erreurs suivantes :
   - 1 : une variable existe déja avec le nom demandé.
   - 2 : un ou plusieurs arguments sont manquants.
+  - 3 : le fichier selectionner n'existe pas
 
 #### DELETE :
 La commande ```DELETE``` permet de supprimer une variable dans un fichier.
@@ -130,6 +131,7 @@ Réponse :
 - ```ERROR <num>``` : la suppression de la variable a entrainé une des erreurs suivantes :
   - 1 : aucune variable avec le nom suivant existe
   - 2 : un ou plusieurs arguments sont manquants.
+  - 3 : le fichier selectionner n'existe pas
 
 #### MODIFY :
 La commande ```MODIFY``` permet de modifier la valeur d'une variable.
@@ -146,6 +148,8 @@ Réponse :
 - ```ERROR <num>``` : la modification de la valeur de la variable a entrainé une des erreurs suivantes :
   - 1 : aucune variable avec le nom suivant existe.
   - 2 : un ou plusieurs arguments sont manquants.
+  - 3 : le fichier selectionner n'existe pas
+
 
 #### RENAME :
 La commande ```RENAME``` permet de modifier le nom d'une variable.
@@ -163,6 +167,8 @@ Reponse :
   - 1 : aucune variable avec ce nom n'existe.
   - 2 : une variable avec ce nom existe déja.
   - 3 : un ou plusieurs arguments sont manquants.
+  - 4 : le fichier selectionner n'existe pas
+
 
 ## Section 4 - Examples
 
