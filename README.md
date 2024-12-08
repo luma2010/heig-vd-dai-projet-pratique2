@@ -169,9 +169,10 @@ Reponse :
 
 
 ## Section 4 - Examples
-
+Ci-dessous nous pouvons voir un exemple fonctionnel entre le server et un client :
 ![diagramme1](diagramme_sequence_1.png)
 
+Ci-dessous, un autre exemple, mais avec une erreur
 ![diagramme2](diagramme_sequence_2.png)
 
 ## Utiliser le projet localement
@@ -185,7 +186,7 @@ docker pull ghcr.io/luma2010/heig-vd-dai-rpjet-pratique2:latest
 Afin que le projet puisse fonctionner, nous devons du créer un docker network afin que les deux containers puissent
 communiquer entre eux. Il vous faudra télécharger ce conteneur en plus du projet.
 
-Maintenant que vous avez les conteneurs sur votre machine, le premier conteneur que vous devez lancer est celui qui 
+Maintenant que vous avez les conteneurs sur votre machine, Il faudra crée un docker network afin de 
 permet la connexion entre le client et le serveur. Voici la commande que nous vous recommandons de faire :
 ```bash
 docker network create --subnet=172.28.0.0/16 mynet123
