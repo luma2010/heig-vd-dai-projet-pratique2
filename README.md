@@ -42,7 +42,7 @@ VARIABLES <filename>
 ### LS :
 La commande ```LS``` permet d'afficher les différents fichiers modifiables dans le serveur.
 
-Reponse du serveur :
+Réponse du serveur :
 ```text
 FILES <filename1> <filename2> ...
 ```
@@ -50,13 +50,13 @@ FILES <filename1> <filename2> ...
 ### CAT :
 La commande ```CAT``` permet d'afficher le contenu d'un fichier.
 
-Requete :
+Requête :
 ```text
 CAT <filename>
 ```
 ```<filename>``` : nom du fichier
 
-Reponse :
+Réponse :
 
 Si le fichier existe et qu'il n'y a pas d'erreur, la réponse serveur sera :
 ```text
@@ -113,7 +113,7 @@ Réponse :
 - ```ERROR <num>``` : la création de la variable a entrainé une des erreurs suivantes :
   - 1 : une variable existe déja avec le nom demandé.
   - 2 : un ou plusieurs arguments sont manquants.
-  - 3 : le fichier selectionner n'existe pas
+  - 3 : le fichier sélectionné n'existe pas
 
 #### DELETE :
 La commande ```DELETE``` permet de supprimer une variable dans un fichier.
@@ -129,7 +129,7 @@ Réponse :
 - ```ERROR <num>``` : la suppression de la variable a entrainé une des erreurs suivantes :
   - 1 : aucune variable avec le nom suivant existe
   - 2 : un ou plusieurs arguments sont manquants.
-  - 3 : le fichier selectionner n'existe pas
+  - 3 : le fichier sélectionné n'existe pas
 
 #### MODIFY :
 La commande ```MODIFY``` permet de modifier la valeur d'une variable.
@@ -146,7 +146,7 @@ Réponse :
 - ```ERROR <num>``` : la modification de la valeur de la variable a entrainé une des erreurs suivantes :
   - 1 : aucune variable avec le nom suivant existe.
   - 2 : un ou plusieurs arguments sont manquants.
-  - 3 : le fichier selectionner n'existe pas
+  - 3 : le fichier sélectionné n'existe pas
 
 
 #### RENAME :
@@ -159,17 +159,16 @@ RENAME <varName> <newVarName>
 - ```<varName>``` : nom de la variable
 - ```<newVarName>``` : nouveau nom de la variable
 
-Reponse : 
+Réponse : 
 - ```OK``` : la modification du nom de la variable n'a eu aucun problème
 - ```ERROR <num>``` : la modification du nom de la variable a entrainé une des erreurs suivantes :
   - 1 : aucune variable avec ce nom n'existe.
   - 2 : une variable avec ce nom existe déja.
   - 3 : un ou plusieurs arguments sont manquants.
-  - 4 : le fichier selectionner n'existe pas
-
+  - 4 : le fichier sélectionné n'existe pas
 
 ## Section 4 - Examples
-Ci-dessous nous pouvons voir un exemple fonctionnel entre le server et un client :
+Ci-dessous, nous pouvons voir un exemple fonctionnel entre le server et un client :
 
 ![diagramme2](diagramme_sequence_2.png)
 
@@ -182,14 +181,14 @@ Notre projet est mis sous la forme d'un conteneur Docker et il est stocké sur G
 Afin d'utiliser le programme localement sur votre machine, il vous faudra utiliser la commande suivante :  
 
 ```bash
-docker pull ghcr.io/luma2010/heig-vd-dai-rpjet-pratique2:latest
+docker pull ghcr.io/luma2010/heig-vd-dai-projet-pratique2:latest
 ```
 
 Afin que le projet puisse fonctionner, nous devons du créer un docker network afin que les deux containers puissent
 communiquer entre eux. Il vous faudra télécharger ce conteneur en plus du projet.
 
-Maintenant que vous avez les conteneurs sur votre machine, Il faudra crée un docker network afin de 
-permet la connexion entre le client et le serveur. Voici la commande que nous vous recommandons de faire :
+Maintenant que vous avez les conteneurs sur votre machine, il faudra créer un docker network afin de 
+permettre la connexion entre le client et le serveur. Voici la commande que nous vous recommandons de faire :
 ```bash
 docker network create --subnet=172.28.0.0/16 mynet123
 ```
@@ -210,7 +209,7 @@ docker run ghcr.io/luma2010/heig-vd-dai-rpjet-pratique2:latest <numero_port> cli
 Une fois que la partie client est lancée, il vous suffit d'entrer les commandes que vous souhaitez utiliser.
 
 ## Publier le projet sur docker
-Afin de publier le projet sur docker, nous avons du crée le Dockerfile suivant :
+Afin de publier le projet sur docker, nous avons dû créer le Dockerfile suivant :
 ```Dockerfile
 FROM eclipse-temurin:21-jre
 
@@ -228,9 +227,9 @@ Une fois le Dockerfile crée, nous devons lancer la commande suivante :
 docker build -t <nomDeImage> .
 ```
 ```<nomDeImage>``` : nom que l'on veut donner à l'image.
-Cette commande va regarder le Dockerfile afin de crée l'image.
+Cette commande va regarder le Dockerfile afin de créer l'image.
 
-Une fois l'image crée, il faudra être authentifier pour publier sur GitHub Container Registry à l'aide de la commande suivante :
+Une fois l'image crée, il faudra être authentifié pour publier sur GitHub Container Registry à l'aide de la commande suivante :
 ```bash
 docker push <nomDeImage>
 ```
@@ -298,5 +297,5 @@ En outre, nous avons dû utiliser un docker network, car les deux containers son
 ## Conclusion
 Ce travail très intéressant nous a permis d'en apprendre plus sur les sockets et docker.  
 Nous avons été confronté à diverses difficultés liées à l'utilisation des images dockers, comme pour la communication 
-entre la partie serveur et client, mais avec un peu de patience, nous avons pu identifié ces problèmes et les résoudre 
+entre la partie serveur et client, mais avec un peu de patience, nous avons pu identifier ces problèmes et les résoudre 
 au mieux.
