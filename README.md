@@ -199,12 +199,12 @@ docker network create --subnet=172.28.0.0/16 mynet123
  
 Une fois que le docker network a été lancé, vous devez lancer le serveur docker avec la commande suivante :
 ```text
-docker run --network=mynet123 --ip <ipDeLaMachine> -it heig-vd-dai-rpjet-pratique2 <numeroPort> server <ipDuServer>
+docker run --network=mynet123 --ip <ipDeLaMachine> -it ghcr.io/luma2010/heig-vd-dai-rpjet-pratique2 <numeroPort> server <ipDuServer>
 ```
 
 En parallèle, vous devez lancer la partie client avec la commande : 
 ```text
-docker run ghcr.io/luma2010/heig-vd-dai-rpjet-pratique2:latest <numero_port> client <adress_IP>
+docker run --network=mynet123 --ip <ipDeLaMachine> -it ghcr.io/luma2010/heig-vd-dai-rpjet-pratique2 <numeroPort> client <ipDuServer>
 ```
 Une fois que la partie client est lancée, il vous suffit d'entrer les commandes que vous souhaitez utiliser.
 
