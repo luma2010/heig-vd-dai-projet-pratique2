@@ -11,9 +11,7 @@ Les modifications possibles sont :
 - Suppression d'une variable dans un fichier.
 - Modification de la valeur d'une variable dans un fichier.
 - Renommer une variable d'un fichier.
-- Ajouter un fichier.
-- Supprimer un fichier.
-- Renommer un fichier.
+
 
 ## Section 2 - Transport Protocole
 Le protocole VAMP utilise TCP afin de vérifier que la réception et l'envoie de données a bien été effectué, il sera 
@@ -211,7 +209,6 @@ Une fois que la partie client est lancée, il vous suffit d'entrer les commandes
 ## Publier le projet sur docker
 
 ## Implémentation
-// TODO  
 Dans cette section, nous allons passer plus en détail sur l'implémentation de nos méthodes.
 
 La méthode _addVariableToFile_ :  
@@ -267,7 +264,7 @@ remplacé avant d'être écrit à la place de la bonne ligne et écrit dans le f
   
 Afin que le côté client et serveur fonctionne, nous avons bien évidemment utilisé des sockets pour le client et pour le 
 serveur.  
-En outre, nous avons dû utiliser un docker network, car les deux containers sont isolé de la machine hôte.
+En outre, nous avons dû utiliser un docker network, car les deux containers sont isolé entre eux.
 
 ## Conclusion
 Ce travail très intéressant nous a permis d'en apprendre plus sur les sockets et docker.  
