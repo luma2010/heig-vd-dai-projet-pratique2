@@ -166,6 +166,9 @@ Reponse :
 
 ## Section 4 - Examples
 
+![diagramme1](diagramme_sequence_1.png)
+
+![diagramme2](diagramme_sequence_2.png)
 
 ## Utiliser le projet localement
 Notre projet est mis sous la forme d'un conteneur Docker et il est stocké sur GitHub Container Registry.  
@@ -241,3 +244,27 @@ _try-with-ressources_, qui nous permet d'initialiser le flux de sortie, le write
 d'écriture. En cas de problème, nous levons une exception. Si tout se passe bien, une boucle _for_ parcourt le _String_ 
 en écrivant dans le fichier de sortie tout en recherchant la variable que nous souhaitons modifier. Une fois trouvée, 
 son nom est remplacé et écrit dans le fichier. 
+
+La méthode _rename_ : 
+Cette méthode nous permet de renommer une variable sans modifier sa valeur. Elle prend en trois paramètres _String_, le 
+premier est le nom du fichier, le deuxième le nom de la variable à modifier et le troisième est le nouveau nom de la 
+variable. Cette méthode commence par un _try-with-ressources_ qui permet d'initialiser le flux d'entrée, un reader 
+encodé en _UTF_8_ et un buffer de lecture. Si les initialisations ne peuvent se faire, une exception est levée. Si tout 
+se passe bien, nous entrons dans une boucle qui permet de vérifier que la variable à modifier existe tout en écrivant 
+dans une liste de _String_ chaque ligne lue. Si la variable n'existe pas, un message indiquant le problème s'affiche et 
+on sort de la méthode avec 1 pour valeur de retour. Si la variable existe, un deuxième _try-with-ressources_ est fait,
+celui-ci nous permet d'initialiser le flux de sortie, un writer et un buffer d'écriture. Si ces initialisations ne peuvent 
+se faire, une exception est levée. Si tout fonctionne normalement, une deuxième lecture du fichier est effectuée,
+durant laquelle on sépare le nom des variables de leur valeur. Tant que la variable à modifier n'est pas trouvé, les 
+lignes variables/valeur sont réécrite dans le fichier. Une fois que l'on a trouvé la variable à modifier, son nom est 
+remplacé avant d'être écrit à la place de la bonne ligne et écrit dans le fichier à son tour.  
+  
+Afin que le côté client et serveur fonctionne, nous avons bien évidemment utilisé des sockets pour le client et pour le 
+serveur.  
+En outre, nous avons dû utiliser un docker network, car les deux containers sont isolé de la machine hôte.
+
+## Conclusion
+Ce travail très intéressant nous a permis d'en apprendre plus sur les sockets et docker.  
+Nous avons été confronté à diverses difficultés liées à l'utilisation des images dockers, comme pour la communication 
+entre la partie serveur et client, mais avec un peu de patience, nous avons pu identifié ces problèmes et les résoudre 
+au mieux.
