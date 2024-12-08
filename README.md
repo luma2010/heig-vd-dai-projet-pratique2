@@ -181,7 +181,7 @@ Notre projet est mis sous la forme d'un conteneur Docker et il est stocké sur G
 Afin d'utiliser le programme localement sur votre machine, il vous faudra utiliser la commande suivante :  
 
 ```bash
-docker pull ghcr.io/luma2010/heig-vd-dai-projet-pratique2:latest
+docker pull ghcr.io/luma2010/heig-vd-dai-rpjet-pratique2:latest
 ```
 
 Afin que le projet puisse fonctionner, nous devons du créer un docker network afin que les deux containers puissent
@@ -198,12 +198,12 @@ docker network create --subnet=172.28.0.0/16 mynet123
 > afin de pouvoir établir la connexion.
  
 Une fois que le docker network a été lancé, vous devez lancer le serveur docker avec la commande suivante :
-```bash
+```text
 docker run ghcr.io/luma2010/heig-vd-dai-rpjet-pratique2:latest <numero_port> server <adress_IP>
 ```
 
 En parallèle, vous devez lancer la partie client avec la commande : 
-```bash
+```text
 docker run ghcr.io/luma2010/heig-vd-dai-rpjet-pratique2:latest <numero_port> client <adress_IP>
 ```
 Une fois que la partie client est lancée, il vous suffit d'entrer les commandes que vous souhaitez utiliser.
